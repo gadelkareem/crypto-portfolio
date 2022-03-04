@@ -22,9 +22,9 @@ Coin price data is collected from CoinMarketCap and CoinGecko in addition to the
 
 # Installation:
 - Open ready template [https://docs.google.com/spreadsheets/d/1Xt03dgaP-d1wFatrncyyR6mOnwE_oFHZpaQQRjpw-_s/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1Xt03dgaP-d1wFatrncyyR6mOnwE_oFHZpaQQRjpw-_s/edit?usp=sharing)
-- Open File > Make a copy to be able to edit the document.
+- Open File > Make a copy to be able to edit the document. 
 - Open Extensions >  Apps Script.
-- Press 'Run' from top menu and give permissions to the Crypto Balance project.
+- Press 'Run' from top menu and give permissions to the Crypto Portfolio project. (more info : [https://spreadsheet.dev/authorizing-an-apps-script](https://spreadsheet.dev/authorizing-an-apps-script))
 - Add your API keys to the Keys sheet and leave out the ones you do not need.
 - Clear the 'Crypto: History' sheet from test data, so it tracks your own portfolio history.
 - Add these two 'on edit' triggers to Apps Script:
