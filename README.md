@@ -29,7 +29,7 @@ Coin price data is collected from CoinMarketCap and CoinGecko in addition to the
 - Add your API keys to the Keys sheet and leave out the ones you do not need.
 - Clear the 'Crypto: History' sheet from test data, so it tracks your own portfolio history.
 - Clear the 'Crypto: offlline' sheet from test data and add any offline wallets balances you have.
-- Clear the 'Crypto: Binance Locked' sheet from test data and add any Binance locked coins you have.
+- Clear the 'Crypto: Binance Locked' sheet from test data and add any Binance locked coins you have. (more info: [https://dev.binance.vision/t/earn-locked-staking/1453](https://dev.binance.vision/t/earn-locked-staking/1453))
 - Add these two 'on edit' triggers to Apps Script:
 ![](img/trigger1.png)
 ![](img/trigger2.png)
