@@ -16,7 +16,7 @@ Cryptocurrency portfolio Google sheet to collect and analyze cryptocurrency data
  - [Binance](https://accounts.binance.com/en/register?ref=114054479)
  - [Coinbase](https://www.coinbase.com/join/gadelk_p)
  - [Crypto.com](https://crypto.com/exch/8e8ju9mark)
- - [Kraken](https://www.kraken.com/en-us/register)
+ - [Kraken](https://www.kraken.com/sign-up)
  
 
 Coin price data is collected from CoinMarketCap and CoinGecko in addition to the exchanges above.
@@ -38,5 +38,5 @@ Coin price data is collected from CoinMarketCap and CoinGecko in addition to the
     - [https://accounts.binance.com/en/register?ref=114054479](https://accounts.binance.com/en/register?ref=114054479)
     - [https://www.coinbase.com/join/gadelk_p](https://www.coinbase.com/join/gadelk_p)
     - [https://crypto.com/exch/8e8ju9mark](https://crypto.com/exch/8e8ju9mark)
-    
+    - [https://www.kraken.com/sign-up](https://www.kraken.com/sign-up)
     - [https://pro.coinmarketcap.com/signup/](https://pro.coinmarketcap.com/signup/)
