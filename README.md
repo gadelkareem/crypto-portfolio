@@ -17,6 +17,7 @@ Cryptocurrency portfolio Google sheet to collect and analyze cryptocurrency data
  - [Kraken](https://r.kraken.com/e4jgeD)
  - [Coinbase](https://www.coinbase.com/join/gadelk_p)
  - [Crypto.com](https://crypto.com/exch/8e8ju9mark)
+ 
 
 Coin price data is collected from CoinMarketCap and CoinGecko in addition to the exchanges above.
 
@@ -27,6 +28,8 @@ Coin price data is collected from CoinMarketCap and CoinGecko in addition to the
 - Press 'Run' from top menu and give permissions to the Crypto Portfolio project. (more info : [https://spreadsheet.dev/authorizing-an-apps-script](https://spreadsheet.dev/authorizing-an-apps-script))
 - Add your API keys to the Keys sheet and leave out the ones you do not need.
 - Clear the 'Crypto: History' sheet from test data, so it tracks your own portfolio history.
+- Clear the 'Crypto: offline' sheet from test data and add any offline wallets balances you have.
+- Clear the 'Crypto: Binance Locked' sheet from test data and add any Binance locked coins you have. (more info: [https://dev.binance.vision/t/earn-locked-staking/1453](https://dev.binance.vision/t/earn-locked-staking/1453))
 - Add these two 'on edit' triggers to Apps Script:
 ![](img/trigger1.png)
 ![](img/trigger2.png)
