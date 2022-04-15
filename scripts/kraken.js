@@ -41,9 +41,6 @@ function krakenPrivate(endpoint, parameters) {
     Utilities.sleep(Math.random() * 100)
 
     key = keysSheet.getRange('B4').getValue()
-    if (!key || key == 'test') {
-        return {}
-    }
     api_secret = Utilities.base64Decode(keysSheet.getRange('C4').getValue())
     api_path = Utilities.newBlob('/0/private/' + endpoint).getBytes()
     api_nonce = Date.now().toString()
@@ -60,6 +57,10 @@ function krakenPrivate(endpoint, parameters) {
 }
 
 function krakenAssets() {
+    key = keysSheet.getRange('B4').getValue()
+    if (!key || key == 'test') {
+        return {}
+    }
     var listKey = `krakenAssets`;
     var response = cache.get(listKey);
     if (!response) {

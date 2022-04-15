@@ -1,7 +1,8 @@
-var cache = CacheService.getScriptCache(),
-    cryptoSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Crypto"),
+var cryptoSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Crypto"),
     cryptoHistorySheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Crypto: History"),
-    keysSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Keys")
+    keysSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Keys"),
+    cache = CacheService.getScriptCache()
+
 
 function onOpen() {
     displayCryptoAssets()
@@ -76,7 +77,7 @@ function testAssets() {
 }
 
 function displayCryptoAssets() {
-    var ka, ba, cba, ofa, cca
+    var ka, ba, cba, ofa, cca, kca, ftx, bfi
 
     if (keysSheet.getRange('B3').getValue() === 'test') {
         ka = testAssets()
@@ -84,16 +85,21 @@ function displayCryptoAssets() {
         cba = testAssets()
         ofa = offlineAssets()
         cca = testAssets()
+        ftx = testAssets()
+        bfi = testAssets()
     } else {
         ka = krakenAssets()
         ba = binanceAssets()
         cba = coinbaseAssets()
         ofa = offlineAssets()
         cca = cryptoComAssets()
+        kca = kucoinAssets()
+        ftx = ftxAssets()
+        bfi = blockfiAssets()
     }
 
 
-    var assets = mergeObjects([ka, ba, cba, ofa, cca])
+    var assets = mergeObjects([ka, ba, cba, ofa, cca, kca, ftx, bfi])
     if (!Object.keys(assets).length) {
         throw new Error('No assets found!')
     }
@@ -105,13 +111,13 @@ function displayCryptoAssets() {
         }
         var p = coinPrice(k)
         i++
-        l.push([k, assets[k], p * assets[k], '', '', '', p, ka[k], ba[k], cba[k], ofa[k], cca[k]])
+        l.push([k, assets[k], p * assets[k], '', '', '', p, ka[k], ba[k], cba[k], ofa[k], cca[k], kca[k], ftx[k], bfi[k]])
     }
     l.sort(function (a, b) {
         return b[2] - a[2]
     })
     var t = l.length
-    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com'])
+    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'Kucoin', 'FTX', 'BlockFi'])
 
     for (var i = 1; i < l.length; i++) {
         l[i][3] = '=(C' + (i + 1) + ')/D1'
@@ -146,6 +152,9 @@ function fillCryptoHistory() {
         totalAssetsBalance(krakenAssets()),
         totalAssetsBalance(coinbaseAssets()),
         totalAssetsBalance(cryptoComAssets()),
+        totalAssetsBalance(kucoinAssets()),
+        totalAssetsBalance(ftxAssets()),
+        totalAssetsBalance(blockfiAssets()),
     ]
     l.unshift(l.reduce((a, b) => a + b, 0))
     l.unshift(today)
@@ -154,5 +163,5 @@ function fillCryptoHistory() {
 }
 
 function coinPrice(symbol) {
-    return krakenCoinPrice(symbol) || binanceCoinPrice(symbol) || coinbaseCoinPrice(symbol) || coinMarketCapCoinPrice(symbol) || coingeckoCoinPrice(symbol)
+    return krakenCoinPrice(symbol) || binanceCoinPrice(symbol) || coinbaseCoinPrice(symbol) || coinMarketCapCoinPrice(symbol)
 }

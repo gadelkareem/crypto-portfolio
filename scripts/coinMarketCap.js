@@ -1,4 +1,3 @@
-
 function coinMarketCapCoinPrice(symbol) {
     var listKey = `coinMarketCapPriceList_${symbol}`
     var runningKey = 'running_coinMarketCap'
@@ -9,7 +8,7 @@ function coinMarketCapCoinPrice(symbol) {
         Utilities.sleep(500);
     }
 
-    if(!response){
+    if (!response) {
         cache.put(runningKey, true, 1);
         const url = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=${symbol}&convert=USD`
 
@@ -19,9 +18,9 @@ function coinMarketCapCoinPrice(symbol) {
         };
 
         response = UrlFetchApp.fetch(url, {
-            "method" : "get",
+            "method": "get",
             "muteHttpExceptions": true,
-            "headers" : headers
+            "headers": headers
         }).getContentText();
 
         cache.put(listKey, response, 21600); //6 Hours
@@ -29,10 +28,9 @@ function coinMarketCapCoinPrice(symbol) {
     }
     var l = JSON.parse(response) || [];
 
-    if(!l || !l.data || !l.data[symbol]){
+    if (!l || !l.data || !l.data[symbol]) {
         return 0;
     }
-
 
 
     return l.data[symbol].quote.USD.price;

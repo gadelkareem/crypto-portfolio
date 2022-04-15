@@ -17,6 +17,9 @@ Cryptocurrency portfolio Google sheet to collect and analyze cryptocurrency data
  - [Kraken](https://r.kraken.com/e4jgeD)
  - [Coinbase](https://www.coinbase.com/join/gadelk_p)
  - [Crypto.com](https://crypto.com/exch/8e8ju9mark)
+ - [KuCoin](https://www.kucoin.com/ucenter/signup?rcode=rP8938N)
+ - [BlockFi](https://app.blockfi.com/signup/?ref=a2eeca03)
+ - [FTX](https://ftx.com/eu/referrals#a=105794915)
  
 
 Coin price data is collected from CoinMarketCap and CoinGecko in addition to the exchanges above.
@@ -39,5 +42,8 @@ Coin price data is collected from CoinMarketCap and CoinGecko in addition to the
     - [https://accounts.binance.com/en/register?ref=114054479](https://accounts.binance.com/en/register?ref=114054479)
     - [https://www.coinbase.com/join/gadelk_p](https://www.coinbase.com/join/gadelk_p)
     - [https://crypto.com/exch/8e8ju9mark](https://crypto.com/exch/8e8ju9mark)
+    - [https://www.kucoin.com/ucenter/signup?rcode=rP8938N](https://www.kucoin.com/ucenter/signup?rcode=rP8938N)
     - [https://r.kraken.com/e4jgeD](https://r.kraken.com/e4jgeD)
+    - [https://app.blockfi.com/signup/?ref=a2eeca03](https://app.blockfi.com/signup/?ref=a2eeca03)
+    - [https://ftx.com/eu/referrals#a=105794915](https://ftx.com/eu/referrals#a=105794915)
     - [https://pro.coinmarketcap.com/signup/](https://pro.coinmarketcap.com/signup/)
