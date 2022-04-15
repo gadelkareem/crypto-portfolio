@@ -19,6 +19,8 @@ function binanceCoinPrice(symbol) {
     }
     var l = JSON.parse(response) || []
     if (!l.length) {
+        cache.remove(listKey)
+        console.log('Binance Error: ' + response)
         return 0
     }
     var price = 0

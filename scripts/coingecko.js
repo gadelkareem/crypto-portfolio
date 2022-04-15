@@ -21,6 +21,8 @@ function coingeckoCoinPrice(symbol) {
         var l = JSON.parse(response) || []
     } catch {
         console.log('coingeckoCoinPrice Error ' + response)
+        console.log(response)
+        cache.remove(listKey)
         return 0
     }
     var price = 0

@@ -43,8 +43,27 @@ function cryptoComAssets() {
     for (a of l.accounts) {
         assets[a.currency] = parseFloat(a.balance)
     }
-
+    assets = mergeObjects([assets, cryptoComLockedAssets()])
     // console.log(assets)
     return removeZeros(assets)
 }
+
+function cryptoComLockedAssets() {
+    var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Crypto: Crypto.com APP"),
+        rows = ss.getDataRange().getNumRows(),
+        l = ss.getRange(2, 1, rows, 2).getValues()
+
+    var assets = {}
+    for (a of l) {
+        if (a[0] in assets) {
+            throw new Error('Crypto.com locked error: repeated coin ' + a[0])
+        }
+        assets[a[0]] = a[1]
+    }
+
+    return removeZeros(assets)
+}
+
+
+
 

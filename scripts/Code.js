@@ -85,6 +85,7 @@ function displayCryptoAssets() {
         cba = testAssets()
         ofa = offlineAssets()
         cca = testAssets()
+        kca = testAssets()
         ftx = testAssets()
         bfi = testAssets()
     } else {
@@ -117,11 +118,14 @@ function displayCryptoAssets() {
         return b[2] - a[2]
     })
     var t = l.length
-    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'Kucoin', 'FTX', 'BlockFi'])
+    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Coin Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'KuCoin', 'FTX', 'BlockFi', ''])
 
     for (var i = 1; i < l.length; i++) {
         l[i][3] = '=(C' + (i + 1) + ')/D1'
+        l[i][15] = `=HYPERLINK(CONCATENATE("https://www.tradingview.com/symbols/${l[i][0]}USD/"),"${l[i][0]}")`
     }
+
+
 
     cryptoSheet.clearContents()
     cryptoSheet.getRange(1, 1, l.length, l[0].length).setValues(l)
@@ -163,5 +167,5 @@ function fillCryptoHistory() {
 }
 
 function coinPrice(symbol) {
-    return krakenCoinPrice(symbol) || binanceCoinPrice(symbol) || coinbaseCoinPrice(symbol) || coinMarketCapCoinPrice(symbol)
+    return binanceCoinPrice(symbol) || coinbaseCoinPrice(symbol) || coinMarketCapCoinPrice(symbol) || krakenCoinPrice(symbol) || coingeckoCoinPrice(symbol)
 }

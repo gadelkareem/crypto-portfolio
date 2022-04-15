@@ -19,6 +19,8 @@ function coinbaseCoinPrice(symbol) {
     }
     var l = JSON.parse(response)
     if (!l || !l.data || !l.data.amount) {
+        cache.remove(listKey)
+        console.log('Coinbase Error: ' + response)
         return 0
     }
 

@@ -29,6 +29,8 @@ function coinMarketCapCoinPrice(symbol) {
     var l = JSON.parse(response) || [];
 
     if (!l || !l.data || !l.data[symbol]) {
+        cache.remove(listKey)
+        console.log('CoinMarketCap Error: ' + response)
         return 0;
     }
 
