@@ -141,7 +141,7 @@ function totalAssetsBalance(assets) {
 
 function fillCryptoHistory() {
     var rows = cryptoHistorySheet.getDataRange().getNumRows(),
-        l = cryptoHistorySheet.getRange(rows, 1, 1, 5).getValues()
+        l = cryptoHistorySheet.getRange(rows, 1, 1, 8).getValues()
 
     var today = new Date(),
         rowDate = l[0][0]
