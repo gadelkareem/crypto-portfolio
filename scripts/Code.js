@@ -77,7 +77,7 @@ function testAssets() {
 }
 
 function displayCryptoAssets() {
-    var ka, ba, cba, ofa, cca, kca, ftx, bfi
+    var ka, ba, cba, ofa, cca, kca, ftx, bfi, cls, nxo
 
     if (keysSheet.getRange('B3').getValue() === 'test') {
         ka = testAssets()
@@ -88,6 +88,8 @@ function displayCryptoAssets() {
         kca = testAssets()
         ftx = testAssets()
         bfi = testAssets()
+        cls = testAssets()
+        nxo = testAssets()
     } else {
         ka = krakenAssets()
         ba = binanceAssets()
@@ -97,10 +99,12 @@ function displayCryptoAssets() {
         kca = kucoinAssets()
         ftx = ftxAssets()
         bfi = blockfiAssets()
+        cls = celsiusAssets()
+        nxo = nexoAssets()
     }
 
 
-    var assets = mergeObjects([ka, ba, cba, ofa, cca, kca, ftx, bfi])
+    var assets = mergeObjects([ka, ba, cba, ofa, cca, kca, ftx, bfi, cls, nxo])
     if (!Object.keys(assets).length) {
         throw new Error('No assets found!')
     }
@@ -112,19 +116,18 @@ function displayCryptoAssets() {
         }
         var p = coinPrice(k)
         i++
-        l.push([k, assets[k], p * assets[k], '', '', '', p, ka[k], ba[k], cba[k], ofa[k], cca[k], kca[k], ftx[k], bfi[k]])
+        l.push([k, assets[k], p * assets[k], '', '', '', p, ka[k], ba[k], cba[k], ofa[k], cca[k], kca[k], ftx[k], bfi[k], cls[k], nxo[k]])
     }
     l.sort(function (a, b) {
         return b[2] - a[2]
     })
     var t = l.length
-    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Coin Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'KuCoin', 'FTX', 'BlockFi', ''])
-
+    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Coin Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'KuCoin', 'FTX', 'BlockFi', 'Celsius', 'Nexo', ''])
+    var ln = l[0].length - 1
     for (var i = 1; i < l.length; i++) {
         l[i][3] = '=(C' + (i + 1) + ')/D1'
-        l[i][15] = `=HYPERLINK(CONCATENATE("https://www.tradingview.com/symbols/${l[i][0]}USD/"),"${l[i][0]}")`
+        l[i][ln] = `=HYPERLINK(CONCATENATE("https://www.tradingview.com/symbols/${l[i][0]}USD/"),"${l[i][0]}")`
     }
-
 
 
     cryptoSheet.clearContents()
@@ -141,7 +144,7 @@ function totalAssetsBalance(assets) {
 
 function fillCryptoHistory() {
     var rows = cryptoHistorySheet.getDataRange().getNumRows(),
-        l = cryptoHistorySheet.getRange(rows, 1, 1, 8).getValues()
+        l = cryptoHistorySheet.getRange(rows, 1, 1, 10).getValues()
 
     var today = new Date(),
         rowDate = l[0][0]
@@ -159,6 +162,8 @@ function fillCryptoHistory() {
         totalAssetsBalance(kucoinAssets()),
         totalAssetsBalance(ftxAssets()),
         totalAssetsBalance(blockfiAssets()),
+        totalAssetsBalance(celsiusAssets()),
+        totalAssetsBalance(nexoAssets()),
     ]
     l.unshift(l.reduce((a, b) => a + b, 0))
     l.unshift(today)

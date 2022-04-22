@@ -26,8 +26,14 @@ function coinMarketCapCoinPrice(symbol) {
         cache.put(listKey, response, 21600); //6 Hours
         cache.put(runningKey, false, 1);
     }
-    var l = JSON.parse(response) || [];
-
+    try {
+        var l = JSON.parse(response) || []
+    } catch {
+        console.log('coinMarketCapCoinPrice Error ' + response)
+        console.log(response)
+        cache.remove(listKey)
+        return 0
+    }
     if (!l || !l.data || !l.data[symbol]) {
         cache.remove(listKey)
         console.log('CoinMarketCap Error: ' + response)
