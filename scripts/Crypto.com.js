@@ -30,7 +30,7 @@ function cryptoComAssets() {
     var response = cache.get(listKey);
     if (!response) {
         response = cryptoComPrivate('private/get-account-summary', 'POST', '')
-        cache.put(listKey, response, 21600); //6 Hours
+        cache.put(listKey, response, 15)
     }
     // console.log(response)
     var l = JSON.parse(response).result

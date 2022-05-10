@@ -121,7 +121,7 @@ function displayCryptoAssets() {
     l.sort(function (a, b) {
         return b[2] - a[2]
     })
-    var t = l.length
+    var t = l.length + 1
     l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Coin Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'KuCoin', 'FTX', 'BlockFi', 'Celsius', 'Nexo', ''])
     var ln = l[0].length - 1
     for (var i = 1; i < l.length; i++) {

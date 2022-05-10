@@ -53,7 +53,7 @@ function binanceAssets() {
             },
             'muteHttpExceptions': true
         }).getContentText()
-        cache.put(listKey, response, 21600) //6 Hours
+        cache.put(listKey, response, 15)
     }
 
     l = JSON.parse(response).balances

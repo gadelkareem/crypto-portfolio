@@ -36,7 +36,7 @@ function kucoinAssets() {
     var response = cache.get(listKey);
     if (!response) {
         response = kucoinPrivate('/api/v1/accounts', 'GET')
-        cache.put(listKey, response, 21600); //6 Hours
+        cache.put(listKey, response, 15)
     }
     // console.log(response)
     var l = JSON.parse(response)

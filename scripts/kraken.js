@@ -65,7 +65,7 @@ function krakenAssets() {
     var response = cache.get(listKey);
     if (!response) {
         response = krakenPrivate('BalanceEx', '')
-        cache.put(listKey, response, 21600); //6 Hours
+        cache.put(listKey, response, 15)
     }
     var l = JSON.parse(response)
     var assets = {}

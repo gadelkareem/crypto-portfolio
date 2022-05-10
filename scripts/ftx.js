@@ -30,7 +30,7 @@ function ftxAssets() {
     var response = cache.get(listKey);
     if (!response) {
         response = ftxPrivate('/api/wallet/all_balances', 'GET')
-        cache.put(listKey, response, 21600); //6 Hours
+        cache.put(listKey, response, 15);
     }
     // console.log(response)
     var l = JSON.parse(response)
