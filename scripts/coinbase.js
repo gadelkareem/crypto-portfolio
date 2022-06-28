@@ -52,7 +52,13 @@ function coinbaseAssets() {
             },
             'muteHttpExceptions': true
         }).getContentText()
-        cache.put(listKey, response, 15)
+        try {
+            cache.put(listKey, response, 15)
+        } catch (e) {
+            console.log(e, response)
+            cache.remove(listKey)
+        }
+
     }
 
     l = JSON.parse(response).data

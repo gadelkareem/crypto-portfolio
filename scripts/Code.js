@@ -77,7 +77,7 @@ function testAssets() {
 }
 
 function displayCryptoAssets() {
-    var ka, ba, cba, ofa, cca, kca, ftx, bfi, cls, nxo
+    var ka, ba, cba, ofa, cca, kca, ftx, bfi, cls, nxo, grd
 
     if (keysSheet.getRange('B3').getValue() === 'test') {
         ka = testAssets()
@@ -90,6 +90,7 @@ function displayCryptoAssets() {
         bfi = testAssets()
         cls = testAssets()
         nxo = testAssets()
+        grd = testAssets()
     } else {
         ka = krakenAssets()
         ba = binanceAssets()
@@ -101,10 +102,11 @@ function displayCryptoAssets() {
         bfi = blockfiAssets()
         cls = celsiusAssets()
         nxo = nexoAssets()
+        grd = guardaAssets()
     }
 
 
-    var assets = mergeObjects([ka, ba, cba, ofa, cca, kca, ftx, bfi, cls, nxo])
+    var assets = mergeObjects([ka, ba, cba, ofa, cca, kca, ftx, bfi, cls, nxo, grd])
     if (!Object.keys(assets).length) {
         throw new Error('No assets found!')
     }
@@ -116,13 +118,13 @@ function displayCryptoAssets() {
         }
         var p = coinPrice(k)
         i++
-        l.push([k, assets[k], p * assets[k], '', '', '', p, ka[k], ba[k], cba[k], ofa[k], cca[k], kca[k], ftx[k], bfi[k], cls[k], nxo[k]])
+        l.push([k, assets[k], p * assets[k], '', '', '', p, ka[k], ba[k], cba[k], ofa[k], cca[k], kca[k], ftx[k], bfi[k], cls[k], nxo[k], grd[k]])
     }
     l.sort(function (a, b) {
         return b[2] - a[2]
     })
     var t = l.length + 1
-    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Coin Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'KuCoin', 'FTX', 'BlockFi', 'Celsius', 'Nexo', ''])
+    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Coin Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'KuCoin', 'FTX', 'BlockFi', 'Celsius', 'Nexo', 'Guarda', ''])
     var ln = l[0].length - 1
     for (var i = 1; i < l.length; i++) {
         l[i][3] = '=(C' + (i + 1) + ')/D1'
@@ -164,6 +166,7 @@ function fillCryptoHistory() {
         totalAssetsBalance(blockfiAssets()),
         totalAssetsBalance(celsiusAssets()),
         totalAssetsBalance(nexoAssets()),
+        totalAssetsBalance(guardaAssets()),
     ]
     l.unshift(l.reduce((a, b) => a + b, 0))
     l.unshift(today)

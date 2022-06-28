@@ -1,4 +1,10 @@
 function krakenCoinPrice(symbol) {
+    if(symbol === 'LUNA'){
+        symbol = 'LUNC'
+    }
+    if(symbol === 'LUNA2'){
+        symbol = 'LUNA'
+    }
     var listKey = `krakenPriceList_${symbol}`
     var runningKey = 'running_kraken'
     var response = cache.get(listKey)
@@ -61,7 +67,7 @@ function krakenAssets() {
     if (!key || key == 'test') {
         return {}
     }
-    var listKey = `krakenAssets`;
+    var listKey = `krakenAssetsV3`;
     var response = cache.get(listKey);
     if (!response) {
         response = krakenPrivate('BalanceEx', '')
@@ -77,18 +83,25 @@ function krakenAssets() {
         cache.remove(listKey)
         throw new Error('Kraken Error: ' + response)
     }
-    var rx = /(\.S$|\.HOLD$)/ig, rx1 = /^X(.{3,})$/ig
+    // console.log(l['result'])
+    var rx = /(\.S$|\.HOLD$)/ig, rx1 = /^(X|Z)(.{3,})$/ig, rx2 = /^LUNA2?$/ig
     for (k in assets) {
-        if (!k.match(rx) && !k.match(rx1)) {
+        if (!k.match(rx) && !k.match(rx1) && !k.match(rx2)) {
             continue
         }
-        nk = k.replaceAll(rx, '').replace(rx1, '$1')
-
+        nk = k.replaceAll(rx, '').replace(rx1, '$2')
+        if(nk === 'LUNA'){
+            nk = 'LUNC'
+        }
+        if(nk === 'LUNA2'){
+            nk = 'LUNA'
+        }
         assets[nk] = assets[nk] || 0
         assets[nk] += assets[k]
         delete assets[k]
     }
-    // console.log(assets)
+
+    // console.log('kraken',assets)
     return removeZeros(assets)
 }
 
