@@ -20,6 +20,7 @@ Cryptocurrency portfolio Google sheet to collect and analyze cryptocurrency data
  - [KuCoin](https://www.kucoin.com/ucenter/signup?rcode=rP8938N)
  - [BlockFi](https://app.blockfi.com/signup/?ref=a2eeca03)
  - [FTX](https://ftx.com/eu/referrals#a=105794915)
+ - [Guarda](https://grd.to/ref/WrUx)
  
 
 Coin price data is collected from CoinMarketCap and CoinGecko in addition to the exchanges above.
@@ -46,4 +47,5 @@ Coin price data is collected from CoinMarketCap and CoinGecko in addition to the
     - [https://r.kraken.com/e4jgeD](https://r.kraken.com/e4jgeD)
     - [https://app.blockfi.com/signup/?ref=a2eeca03](https://app.blockfi.com/signup/?ref=a2eeca03)
     - [https://ftx.com/eu/referrals#a=105794915](https://ftx.com/eu/referrals#a=105794915)
+    - [https://grd.to/ref/WrUx](https://grd.to/ref/WrUx)
     - [https://pro.coinmarketcap.com/signup/](https://pro.coinmarketcap.com/signup/)
