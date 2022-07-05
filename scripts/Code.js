@@ -118,13 +118,13 @@ function displayCryptoAssets() {
         }
         var p = coinPrice(k)
         i++
-        l.push([k, assets[k], p * assets[k], '', '', '', p, ka[k], ba[k], cba[k], ofa[k], cca[k], kca[k], ftx[k], bfi[k], cls[k], nxo[k], grd[k]])
+        l.push([k, assets[k], p * assets[k], '', '', '', p, ka[k], ba[k], ba[k] ? ba[k] * p : '', cba[k], ofa[k], cca[k], kca[k], ftx[k], bfi[k], cls[k], nxo[k], grd[k]])
     }
     l.sort(function (a, b) {
         return b[2] - a[2]
     })
     var t = l.length + 1
-    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Coin Price', 'Kraken', 'Binance', 'Coinbase', 'Offline', 'Crypto.com', 'KuCoin', 'FTX', 'BlockFi', 'Celsius', 'Nexo', 'Guarda', ''])
+    l.unshift(['', '', '', `=SUM(C2:C${t})`, `=D1*GOOGLEFINANCE("CURRENCY:USDEUR")`, '', 'Coin Price', 'Kraken', 'Binance', 'Binance USD', 'Coinbase', 'Offline', 'Crypto.com', 'KuCoin', 'FTX', 'BlockFi', 'Celsius', 'Nexo', 'Guarda', ''])
     var ln = l[0].length - 1
     for (var i = 1; i < l.length; i++) {
         l[i][3] = '=(C' + (i + 1) + ')/D1'
